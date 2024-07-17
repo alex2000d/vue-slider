@@ -1,11 +1,13 @@
 
-
+// creo la struttura per vuejs
   const {createApp} = Vue;
 
   createApp({
       data(){
           return {
+            // dichiaro una variabile per rendere attiva la prima immagine
             active_image: 0,
+            // inserisco il mio arrey di oggetti
             slides: [
                {
                    image: 'img/01.webp',
@@ -30,5 +32,24 @@
                    }
                ]
           }
-      }
+      },
+    //   aggiungo una funzione per i miei pulsanti e far scorrere le immagini
+      methods: {
+        next_image(){
+            if (this.active_image == this.slides.length - 1){
+                this.active_image = 0;
+            }
+            else {
+                this.active_image++;
+            }
+        },
+        previusly_image(){
+            if (this.active_image == 0){
+                this.active_image = this.slides.length - 1;
+            }
+            else {
+                this.active_image--;
+            }
+        }
+    }
   }).mount('#app');
